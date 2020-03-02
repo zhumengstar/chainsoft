@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--  namespace 赋值 接口Dao层类的完整路径名  -->
+<mapper namespace="com.mybatis.mybatisDemo.model.dao.daoInter.UserDaoInter">
+    <!-- id 对应接口的方法名    resultType 方法返回值类型(使用缩写名 根据核心配置文件确定)      -->
+    
+	<select id="selectUser" resultType="userInfo">
+	select * from usertable;
+	</select>
+	
+	<!-- 增、删、改      获得参数值： #{userId} -->
+	<insert id="userAdd"  parameterType="userInfo"  >
+	insert into usertable(userId,userAccount,userPass) values(#{userId},#{userAccount},#{userPass}) 
+	</insert>
+    <delete id="userDelete"  parameterType="String" >
+    delete from usertable where userAccount=#{userAccount};
+    </delete>
+    <update id="userAlter" parameterType="userInfo">
+    update usertable set userPass=#{userPass}  where userAccount=#{userAccount}
+    </update>
+
+</mapper>

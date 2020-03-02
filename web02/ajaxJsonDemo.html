@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			jsonType = {
+				"name": "王敏",
+				"age": 18,
+				"sex": "女",
+				"hobby": ["吃", "跑步", "爬山"],
+				"child": [{
+					"sex": "男",
+					"bitrh": "2019-4-10"
+				}, {
+					"sex": "女",
+					"bitrh": "2014-8-3"
+				}]
+			}
+		</script>
+
+		<script src="js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#ajaxTest").click(function() { //按钮设置点击事件
+					//jauery ajax 
+					$.ajax({
+						type: "get",
+						/*请求方式*/
+						url: "textAjax.json",
+						/*请求url*/
+						data: "name=zhang",
+						//						async:true,
+						success: function(res) { //相应成功后   res 相应的数据
+							var tbEl = $("#showInfo");
+							$.each(res, function(index,peDatas) {
+//								alert(index+"  "+data)
+								$.each(peDatas, function(peindex,peData) { //peindex  人员信息数组中的索引   peData 每个人员数据
+									//alert(peindex+"  "+peData);
+									//迭代便利每一个人员
+									var peoEl=document.createElement("tr");
+									$.each(peData,function(varname,value){
+									var peVaTd=document.createElement("td");
+									  $(peVaTd).html(value);//给每个值创建单元格
+									  peoEl.appendChild(peVaTd);//将单元格添加到tr中
+										/*alert(varname+"  "+value);*/
+										
+									});
+									tbEl.append(peoEl);
+								});
+
+								
+							});
+
+						}
+					});
+
+				});
+
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<button id="ajaxTest"> ajax请求获得json 数据</button>
+		<br />
+		<div id="t2Span">
+			<table id="showInfo">
+				<tr>
+					<td>FistName</td>
+					<td>LastName</td>
+					<td>email</td>
+				</tr>
+				
+			</table>
+		</div>
+	</body>
+
+</html>

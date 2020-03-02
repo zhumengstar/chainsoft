@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SSMExample:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="xyspgl.war">
+      <element id="artifact" artifact-name="SSMExample:war exploded" />
+    </root>
+  </artifact>
+</component>

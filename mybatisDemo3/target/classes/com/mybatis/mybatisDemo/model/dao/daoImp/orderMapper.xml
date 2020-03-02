@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 某用户购物车商品查询。 -->
+<!-- namespace 赋值 接口Dao层类的完整路径名 -->
+<mapper
+	namespace="com.mybatis.mybatisDemo.model.dao.daoInter.OrderDaoInter">
+	<!-- 查询wm001 的所有的订单 订单编号，订单下单日期 以及订单中的所有商品名称，单价 信息进行显示 */ /* 用户表 ， ordertable 
+		producttable orderprotable */ SELECT res.* FROM (SELECT ortb.userid,ortb.orderid,ortb.orderddate 
+		, pro.proname,proPrice FROM ordertable ortb INNER JOIN orderprotabale odpr 
+		USING (orderid) INNER JOIN producttable pro USING(proid) ) res WHERE res.userid= 
+		(SELECT userid FROM usertable WHERE useraccount='wm001'); -->
+	<!-- resultMap 当表中列明和实体中属性名不一致时 使用匹配 当关联查询 产需数据属于一对一、一对多的情况时 使用 -->
+	<resultMap type="orderInfo" id="orderResult">
+	<result property="orderId" column="orderid"/>
+		<result property="orderDdate" column="orderddate" jdbcType="TIMESTAMP" /> <!-- 实体类中的orderDdate 属性赋值为 结果集的列 orderddate -->
+		<!-- 一关联设置 -->
+		<association property="userInfo" javaType="userInfo">
+			<id property="userId" column="userId" />
+			<result property="userAccount" column="useraccount" />
+		</association>
+		<!-- 多关联设置 -->
+		<collection property="orderProducts" javaType="list"
+			ofType="product">
+			<result property="proName" column="proname" />
+			<result property="proPrice" column="proPrice" />
+		</collection>
+	</resultMap>
+<!-- ortb.orderddate  -->
+	<select id="orderShow" parameterType="String"
+		resultMap="orderResult">
+		SELECT ortb.userid, us.userAccount, ortb.orderid, ortb.orderddate,
+		pro.proname,pro.proPrice FROM usertable us JOIN ordertable
+		ortb USING(userId) INNER JOIN orderprotabale odpr USING (orderid)
+		INNER JOIN producttable pro USING(proid) WHERE
+		us.useraccount=#{userAccount}
+	</select>
+</mapper>

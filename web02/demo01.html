@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<style type="text/css">
+			body,div{
+				margin: 0px; /*  元素外间距*/
+			}
+			.comm_top{
+				height: 45px;
+				background-color: #333;
+				width: 100%;
+			}
+			
+			.top_nav{
+				width: 1024px;
+				height: 45px;
+				font-size: 30px;
+				border: 1px solid salmon;
+				margin-left: auto;
+				margin-right: auto;
+				font-family: "微软雅黑";
+				color: white;
+			}
+			.top_left{
+				float: left;
+				
+			}
+			
+			.top_right{
+				float: right;
+			}
+			
+			.top_nav  *{
+				color: white;
+				font-size: 18px;
+			}
+			
+			.top_nav a{
+				display: inline-block;
+			}
+			
+			.top_nav .top_se{
+				display:  inline-block; /* 行内块元素*/
+				margin-left: 5px;
+			}
+		</style>
+	</head>
+	<body>  
+            <!--
+            	json 格式数据
+            -->
+		<div class="comm_top" id="comm_top">
+			<div class="top_nav">
+				<div class="top_left">
+					<a href="">网易首页</a>
+					<div class="top_se"><a>应用</a>
+						<i class="glyphicon glyphicon-chevron-down"></i>
+					</div>
+				</div>
+				<div class="top_right">
+					右边菜单栏
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

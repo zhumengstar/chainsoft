@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--  namespace 赋值 接口Dao层类的完整路径名  -->
+<mapper namespace="com.mybatis.mybatisDemo.model.dao.daoInter.UserDaoInter">
+    <!-- id 对应接口的方法名    resultType 方法返回值类型      -->
+	<select id="selectUser" resultType="com.mybatis.mybatisDemo.model.entry.UserInfo">
+	select * from usertable;
+	</select>
+   
+
+</mapper>

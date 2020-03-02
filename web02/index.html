@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>登录页面</title>
+		
+		<!--
+        	引入外部js 文件
+        -->
+		<script src="js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		/*	window.onload=function(){
+				//获得元素
+				var userAccEl=document.getElementById("userAcc");
+				var accSpanEl=document.getElementById("accSpan");
+				//元素设置失去焦点事件属性
+				userAccEl.onblur=function(){
+					var userAccValue=userAccEl.value;//获得元素值
+					var accReg=/^[a-zA-Z][a-zA-Z0-9]{5,17}$/;// 帐号以字母开头的6-18位 数字字母
+					if(accReg.test(userAccValue)){
+						accSpanEl.innerHTML="<font color='darkolivegreen'>正确</font>"					
+					}else{
+						accSpanEl.innerHTML="<font color='red'>格式错误</font>"
+						//alert("格式错误");
+					}				
+				}	//休息10分钟
+			}
+			*/			
+			$(document).ready(function(){ //页面加载完成
+				var accEl=$("#userAcc")  //帐号输入框元素
+				var accSpanEl=$("#accSpan");
+				accEl.blur(function(){ //给元素设置光标李凯事件
+					var accVa=accEl.val();//获得元素value值
+					var accReg=/^[a-zA-Z][a-zA-Z0-9]{5,17}$/;// 帐号以字母开头的6-18位 数字字母
+					if(accReg.test(accVa)){
+					accSpanEl.html("<font color='darkolivegreen'>正确</font>");
+					}else{
+						accSpanEl.html("<font color='red'>格式错误</font>");
+						//alert("格式错误");
+					}					
+				});				
+			});
+			
+			
+		</script>
+	</head>
+	<body>	
+		<form action="http://www.baidu.com" method="get" >
+			文本框：<input type="text" name="userAccount" id="userAcc" required="required" placeholder="请输入帐号" /><span id="accSpan">数字字母6-18位之间</span><br	>
+		
+			密码：<input type="password" name="userPass" /><br>
+			
+			<input type="checkbox" />
+			
+			<input type="submit" value="登录" />
+			<button type="reset" >重置</button>
+		</form>
+		
+		
+		<!--html+css     div+css （位置  position）  进行布局-->
+		
+	</body>
+</html>

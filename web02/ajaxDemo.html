@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.4.1.js" ></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#t2").blur(function(){
+					
+					var t2Va=$("#t2").val();//获得text2文本框值
+					//jauery ajax 
+					$.ajax({  
+						type:"get", /*请求方式*/
+						url:"ajaxInfo.txt", /*请求url*/
+						data:  "text2="+t2Va +"&name=zhang",
+//						async:true,
+						success:function(res){ //相应成功后   res 相应的数据
+							$("#t2Span").html(res);
+						}		
+					});
+					
+				});
+				
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<form action="" method="post">
+			Text1 <input type="text" name="text1" id="t1" /><br />
+			ajax 校验 <input type="text" name="text2" id="t2" /><span id="t2Span"></span> <br />
+			Text3 <input type="text" name="text3"  id="t3"/><br /> 
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>
